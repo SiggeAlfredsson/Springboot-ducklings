@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Invoices</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<header>
+    <nav>
+        <form action="add" method="get">
+            <button type="submit" id="addPayment" aria-label="Add new payment">Add new payment</button>
+        </form>
+        <form action="/auth/logout" method="post">
+            <label for="logout"></label>
+            <button type="submit" id="logout" name="logout" aria-label="Logout">Logout</button>
+        </form>
+    </nav>
+</header>
+<main>
+    <div th:if="${invoiceList.isEmpty()}">No invoices registered</div>
+    <table th:if="${!invoiceList.isEmpty()}">
+        <caption><span th:text="${session.username}"></span>'s invoices!</caption>
+        <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="invoice : ${invoiceList}">
+            <td th:text="${invoice.date}"></td>
+            <td th:text="${invoice.title}"></td>
+            <td th:text="${invoice.price}"></td>
+            <td th:text="${invoice.category}"></td>
+            <td th:text="${invoice.description}"></td>
+            <td>
+                <form action="/invoice/edit" method="get">
+                    <label for="editInvoice"></label>
+                    <button type="submit" id="editInvoice" name="editInvoice" th:value="${invoice.id}" aria-label="Edit invoice">Edit</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</main>
+<footer>
+</footer>
+</body>
+</html>

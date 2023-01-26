@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Invoice</title>
+ <!--   <link rel="stylesheet" type="text/css" href="/submitjournalstyle.css"> -->
+</head>
+<body>
+<h1>Add new payments</h1>
+<h3>Logged in as: <span th:text="${session.username}"></span></h3>
+<form action="add" method="POST">
+    <label for="datepicker">Date:</label>
+    <input type="date" class="date-input" id="datepicker" name="date" th:value="${date}">
+    <br>
+    <label for="title">Title:</label>
+    <input type="text" class="title-input" id="title" name="title">
+    <br>
+    <label for="category">Category:</label>
+    <input type="text" class="category-input" id="category" name="category">
+    <br>
+    <label for="description">Description:</label>
+    <input type="text" class="description-input" id="description" name="description">
+    <br>
+    <label for="price">Price:</label>
+    <input type="number" class="price-input" id="price" name="price" pattern="[0-9]*">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
