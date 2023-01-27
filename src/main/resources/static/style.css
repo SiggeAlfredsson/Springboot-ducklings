@@ -1,24 +1,19 @@
-/* Add some spacing to the top and bottom of the page */
 body {
     padding: 20px;
 }
 
-/* Center the table on the page */
 table {
     margin: 0 auto;
 }
 
-/* Add some padding to the cells in the table */
 td {
     padding: 10px;
 }
 
-/* Add a hover effect to the table rows */
 tr {
     background-color: #f2f2f2;
 }
 
-/* Change the font size for the caption */
 caption {
     font-size: 1.5em;
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class InvoiceService {
 
-    private InvoiceRepository invoiceRepository; //name?
+    private InvoiceRepository invoiceRepository;
 
     public InvoiceService() {
         this.invoiceRepository = new InvoiceRepository();

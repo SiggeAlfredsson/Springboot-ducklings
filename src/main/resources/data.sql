@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS users;
-
 CREATE TABLE IF NOT EXISTS invoices (
                  id int AUTO_INCREMENT primary key,
                  owner_username varchar(255),
@@ -7,10 +5,10 @@ CREATE TABLE IF NOT EXISTS invoices (
                  date date,
                  description text,
                  category varchar(255),
-                 price int
+                 price double
 );
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
                        id int AUTO_INCREMENT primary key,
                        username varchar(255),
                        password varchar(255),
@@ -19,7 +17,18 @@ CREATE TABLE users (
 );
 
 
-INSERT INTO users (username, password, created_at, created_by) VALUES ("Max", "$2a$12$6N.iH9POWVCGEaIhssiC8.Mf0XVAWRESIi7MrsbmlLTjOafsdDOdy", now(), "CONSOLE");
-INSERT INTO users (username, password, created_at, created_by) VALUES ("Johan", "$2a$12$6N.iH9POWVCGEaIhssiC8.Mf0XVAWRESIi7MrsbmlLTjOafsdDOdy", now(), "CONSOLE");
-INSERT INTO users (username, password, created_at, created_by) VALUES ("Anton", "$2a$12$6N.iH9POWVCGEaIhssiC8.Mf0XVAWRESIi7MrsbmlLTjOafsdDOdy", now(), "CONSOLE");
-INSERT INTO users (username, password, created_at, created_by) VALUES ("Julia", "$2a$12$6N.iH9POWVCGEaIhssiC8.Mf0XVAWRESIi7MrsbmlLTjOafsdDOdy", now(), "CONSOLE");
+INSERT INTO users (username, password, created_at, created_by)
+SELECT "Max", "", now(), "CONSOLE" FROM DUAL
+WHERE NOT EXISTS (SELECT * FROM users WHERE username = "Max");
+
+INSERT INTO users (username, password, created_at, created_by)
+SELECT "Johan", "", now(), "CONSOLE" FROM DUAL
+WHERE NOT EXISTS (SELECT * FROM users WHERE username = "Johan");
+
+INSERT INTO users (username, password, created_at, created_by)
+SELECT "Anton", "", now(), "CONSOLE" FROM DUAL
+WHERE NOT EXISTS (SELECT * FROM users WHERE username = "Anton");
+
+INSERT INTO users (username, password, created_at, created_by)
+SELECT "Julia", "", now(), "CONSOLE" FROM DUAL
+WHERE NOT EXISTS (SELECT * FROM users WHERE username = "Julia");

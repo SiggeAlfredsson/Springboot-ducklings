@@ -11,7 +11,7 @@ public class Invoice {
     private String date;
     private String description;
     private String category;
-    private int price; // make work with decimals? *100? or double/float?
+    private double price;
 
 
     public String getOwner_username() {
@@ -62,11 +62,11 @@ public class Invoice {
         this.category = category;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

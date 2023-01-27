@@ -35,7 +35,7 @@ public class InvoiceRepository {
                 invoice.setDate(String.valueOf(rs.getDate("date")));
                 invoice.setDescription(rs.getString("description"));
                 invoice.setCategory(rs.getString("category"));
-                invoice.setPrice(rs.getInt("price"));
+                invoice.setPrice(rs.getDouble("price"));
                 invoiceList.add(invoice);
 
             }
@@ -45,7 +45,7 @@ public class InvoiceRepository {
         }
     }
 
-    public void addInvoice(String username, String title, String date, String description, String category, int price) {
+    public void addInvoice(String username, String title, String date, String description, String category, double price) {
         if(username==null){
             return;
         }
@@ -63,7 +63,7 @@ public class InvoiceRepository {
             pstmt.setDate(3, Date.valueOf(date));
             pstmt.setString(4, description);
             pstmt.setString(5, category);
-            pstmt.setInt(6, price);
+            pstmt.setDouble(6, price);
 
             pstmt.execute();
 
@@ -86,7 +86,7 @@ public class InvoiceRepository {
                 invoice.setId(rs.getInt("id"));
                 invoice.setDate(rs.getString("date"));
                 invoice.setTitle(rs.getString("title"));
-                invoice.setPrice(rs.getInt("price"));
+                invoice.setPrice(rs.getDouble("price"));
                 invoice.setCategory(rs.getString("category"));
                 invoice.setDescription(rs.getString("description"));
             }
@@ -97,7 +97,7 @@ public class InvoiceRepository {
     }
 
 
-    public void updateInvoice(int invoiceId, String title, String date, String description, String category, int price) {
+    public void updateInvoice(int invoiceId, String title, String date, String description, String category, double price) {
         db = MysqlDatabase.getInstance();
         Connection conn = db.getConnection();
 
@@ -108,7 +108,7 @@ public class InvoiceRepository {
             pstmt.setDate(2, Date.valueOf(date));
             pstmt.setString(3, description);
             pstmt.setString(4, category);
-            pstmt.setInt(5, price);
+            pstmt.setDouble(5, price);
             pstmt.setInt(6, invoiceId);
 
             pstmt.executeUpdate();
